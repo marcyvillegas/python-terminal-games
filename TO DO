@@ -4,4 +4,6 @@
 = validation of game number input
 - put to /utils
 
-= run a specific game thru the StartGame class
+= Create enum for shared data dict
+
+= start coding game for guess the song

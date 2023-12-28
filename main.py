@@ -1,7 +1,8 @@
 # The goal of this project is to learn and be comfortable with Python classes
 
-from data.enum_game_list import Game
+from data.enum_game_list import GameList
 from data.game_list import game_list
+from data.shared_data import shared_game_data
 
 
 class StartGame:
@@ -19,10 +20,6 @@ class StartGame:
     def __call__(self):
         self.display_start_menu(self)
 
-    # Close the current game - rethink if close game will be here
-    def close(self):
-        print(f"Are you sure you want to close?")
-
     # Displays the start menu and runs the chosen game
     @staticmethod
     def display_start_menu(self):
@@ -35,17 +32,28 @@ class StartGame:
 
         input_game_name = input("Enter the game number you want to play: ")
 
-        chosen_game = self.games[int(input_game_name) - 1]
-        run_game = game_list[chosen_game.value]
+        selected_game = self.games[int(input_game_name) - 1]
+        run_game = game_list[selected_game.value]
         run_game()
 
 
-# Run main python file
-if __name__ == '__main__':
+# Runs main python file
+def main():
     # Add the games on the class
     start_game = StartGame([
-        Game.GUESS_THE_SONG,
-        Game.SAMPLE_2
+        GameList.GUESS_THE_SONG,
+        GameList.SAMPLE_2
     ])
 
+    # Make the instance of StartGame class global
+    shared_game_data['start_game_class_instance'] = start_game
+
+    # Runs the specific game
     start_game()
+
+
+# Make the function that runs the whole program global
+shared_game_data['start_game_program'] = main
+
+# Call the function that will start the program
+main()
