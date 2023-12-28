@@ -1,34 +1,47 @@
 # The goal of this project is to learn and be comfortable with Python classes
 
-class GameBase:
+from data.enum_game_list import Game
+
+
+class StartGame:
     """
-        Game Base class is the foundation of all games.
+        StartGame class is the starting point of the game program.
     """
 
     def __init__(
             self,
-            game_name: str = None,
-            game_score: int = 0
+            games
     ):
-        self.game_name = game_name
-        self.game_score = game_score
+        self.games = games
 
     # Run the start menu of the game
     def __call__(self):
-        print("This will run the start menu of the game")
-        self.display_start_menu()
+        self.display_start_menu(self)
 
     # Close the current game
     def close(self):
-        print(f"Are you sure you want to close {self.game_name}?")
+        print(f"Are you sure you want to close?")
 
-    # Helper function inside the class
+    # Helper functions inside the class
     @staticmethod
-    def display_start_menu():
-        print("Displayed start menu")
+    def display_start_menu(self):
+        print("== Choose what game to play ==")
+
+        game_number = 1
+        for game_item in self.games:
+            print(f"[{game_number}] {game_item.value}")
+            game_number += 1
+
+        input_game_name = input("Please enter some text: ")
 
 
 # Run main python file
 if __name__ == '__main__':
-    game = GameBase("sample_game")
+
+    # Add the games on the class
+    game = StartGame([
+        Game.GUESS_THE_SONG,
+        Game.SAMPLE_2
+    ])
+
     game()
