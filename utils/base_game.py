@@ -1,11 +1,12 @@
-
-# The class base of all games
 class GameBase:
+    """
+        GameBase class is the basis class for all of the games.
+    """
+
     def __init__(
             self,
-            game_name,
-            game_score
+            game_score=0
     ):
-        self.game_name = game_name,
         self.game_score = game_score
 
+    # close the game here

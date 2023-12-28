@@ -4,4 +4,4 @@
 = validation of game number input
 - put to /utils
 
-=
+= run a specific game thru the StartGame class

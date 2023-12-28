@@ -1,6 +1,7 @@
 # The goal of this project is to learn and be comfortable with Python classes
 
 from data.enum_game_list import Game
+from data.game_list import game_list
 
 
 class StartGame:
@@ -18,11 +19,11 @@ class StartGame:
     def __call__(self):
         self.display_start_menu(self)
 
-    # Close the current game
+    # Close the current game - rethink if close game will be here
     def close(self):
         print(f"Are you sure you want to close?")
 
-    # Helper functions inside the class
+    # Displays the start menu and runs the chosen game
     @staticmethod
     def display_start_menu(self):
         print("== Choose what game to play ==")
@@ -32,16 +33,19 @@ class StartGame:
             print(f"[{game_number}] {game_item.value}")
             game_number += 1
 
-        input_game_name = input("Please enter some text: ")
+        input_game_name = input("Enter the game number you want to play: ")
+
+        chosen_game = self.games[int(input_game_name) - 1]
+        run_game = game_list[chosen_game.value]
+        run_game()
 
 
 # Run main python file
 if __name__ == '__main__':
-
     # Add the games on the class
-    game = StartGame([
+    start_game = StartGame([
         Game.GUESS_THE_SONG,
         Game.SAMPLE_2
     ])
 
-    game()
+    start_game()
