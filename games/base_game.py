@@ -11,6 +11,11 @@ class GameBase:
         self.game_score = game_score
         self.game_name = game_name
 
+    def __call__(
+            self
+    ):
+        print(f">> Welcome to {self.game_name} <<")
+
     # Closes the current game and returns back to start menu
     def close_game(
             self

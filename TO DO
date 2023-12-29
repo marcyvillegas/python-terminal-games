@@ -2,8 +2,10 @@
 >> To Dos
 
 = validation of game number input
+- create validator class
 - put to /utils
 
-= Create enum for shared data dict - 1
+= Clear other text in terminal for every step of the program
 
-= start coding game for guess the song - 2
+= start coding game for guess the song
+- know how to loop the game

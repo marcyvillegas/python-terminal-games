@@ -18,7 +18,7 @@ class StartGame:
     def __call__(self):
         self.display_start_menu(self)
 
-    # Displays the start menu and runs the chosen game
+    # Displays the start menu and runs the selected game
     @staticmethod
     def display_start_menu(self):
         print("== Choose what game to play ==")
