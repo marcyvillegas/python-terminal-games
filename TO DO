@@ -5,7 +5,7 @@
 - create validator class
 - put to /utils
 
-= Clear other text in terminal for every step of the program
+= Beautify format
+- add rich text - decide
 
-= start coding game for guess the song
-- know how to loop the game
+= exit game

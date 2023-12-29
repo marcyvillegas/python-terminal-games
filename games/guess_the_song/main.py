@@ -3,6 +3,8 @@ from games.base_game import GameBase
 from games.guess_the_song.data.songs import songs
 import random
 
+from utils.clear_terminal import clear_terminal
+
 
 class GuessTheSongGame(GameBase):
     """
@@ -19,11 +21,24 @@ class GuessTheSongGame(GameBase):
         self.start_game(self)
 
     # Logic of the game
+    is_answer_correct = None
+
     @staticmethod
     def start_game(self):
 
         song_choices = random.sample(songs, 4)
         song_to_guess_index = random.randrange(len(song_choices))
+
+        clear_terminal()
+
+        if isinstance(self.is_answer_correct, bool):
+            if self.is_answer_correct:
+                print("You are correct!")
+                print(f"Your current score is: {self.game_score}")
+
+            if not self.is_answer_correct:
+                print("WRONG!")
+                print(f"Your current score is: {self.game_score}")
 
         print("======================")
         print("Guess this song:")
@@ -36,23 +51,16 @@ class GuessTheSongGame(GameBase):
 
         input_answer = input("Your answer: ")
 
+        if input_answer == "x":
+            self.close_game()
+
         if input_answer == str(song_to_guess_index + 1):
             self.game_score += 1
-            print("You are correct!")
-            print(f"Your current score is: {self.game_score}")
+            self.is_answer_correct = True
             self.start_game(self)
         else:
-            print("WRONG!")
-            print(f"Your current score is: {self.game_score}")
+            self.is_answer_correct = False
             self.start_game(self)
-
-        # Exits the current game
-        # input_exit_game = input(f"Are you sure you want to exit {self.game_name}? (Y/N): ")
-        # if input_exit_game == "Y":
-        #     self.close_game()
-        # else:
-        #     rerun_game = self.__call__
-        #     rerun_game()
 
 
 # Create instance of class

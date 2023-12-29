@@ -1,6 +1,7 @@
 # The goal of this project is to learn and be comfortable with Python classes
 
 from data.enum_game_list import GameList
+from utils.clear_terminal import clear_terminal
 
 
 class StartGame:
@@ -21,6 +22,7 @@ class StartGame:
     # Displays the start menu and runs the selected game
     @staticmethod
     def display_start_menu(self):
+        clear_terminal()
         print("== Choose what game to play ==")
 
         game_number = 1
