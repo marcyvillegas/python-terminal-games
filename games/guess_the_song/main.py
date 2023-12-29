@@ -1,4 +1,3 @@
-from data.shared_data import shared_game_data
 from games.base_game import GameBase
 
 
@@ -26,19 +25,9 @@ class GuessTheSongGame(GameBase):
         if input_exit_game == "Y":
             self.close_game()
         else:
-            del shared_game_data['guess_the_song_class_instance']
-            rerun_game = shared_game_data['start_guess_the_song']
+            rerun_game = self.__call__
             rerun_game()
 
 
-def main():
-    guess_the_song = GuessTheSongGame()
-
-    # Make the instance of GuessTheSongGame class global
-    shared_game_data['guess_the_song_class_instance'] = guess_the_song
-
-    guess_the_song()
-
-
-# Make the function that runs the whole program global
-shared_game_data['start_guess_the_song'] = main
+# Create instance of class
+guess_the_song = GuessTheSongGame()

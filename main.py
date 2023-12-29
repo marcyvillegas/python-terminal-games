@@ -1,8 +1,6 @@
 # The goal of this project is to learn and be comfortable with Python classes
 
 from data.enum_game_list import GameList
-from data.game_list import game_list
-from data.shared_data import shared_game_data
 
 
 class StartGame:
@@ -12,7 +10,7 @@ class StartGame:
 
     def __init__(
             self,
-            games
+            games=None
     ):
         self.games = games
 
@@ -32,28 +30,17 @@ class StartGame:
 
         input_game_name = input("Enter the game number you want to play: ")
 
+        from data.game_list import game_list
         selected_game = self.games[int(input_game_name) - 1]
         run_game = game_list[selected_game.value]
         run_game()
 
 
-# Runs main python file
-def main():
-    # Add the games on the class
-    start_game = StartGame([
-        GameList.GUESS_THE_SONG,
-        GameList.SAMPLE_2
-    ])
+# Create instance of class
+start_game = StartGame([
+    GameList.GUESS_THE_SONG,
+    GameList.SAMPLE_2
+])
 
-    # Make the instance of StartGame class global
-    shared_game_data['start_game_class_instance'] = start_game
-
-    # Runs the specific game
-    start_game()
-
-
-# Make the function that runs the whole program global
-shared_game_data['start_game_program'] = main
-
-# Call the function that will start the program
-main()
+# Runs the game program
+start_game()

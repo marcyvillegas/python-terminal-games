@@ -1,6 +1,3 @@
-from data.shared_data import shared_game_data
-
-
 class GameBase:
     """
         GameBase class is the basis class for all of the games.
@@ -18,7 +15,5 @@ class GameBase:
     def close_game(
             self
     ):
-        del shared_game_data['start_game_class_instance']
-        del shared_game_data['guess_the_song_class_instance']
-        run_game_program = shared_game_data['start_game_program']
-        run_game_program()
+        from main import start_game
+        start_game()
