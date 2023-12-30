@@ -1,4 +1,5 @@
-from termcolor import colored, cprint
+from beaupy import select
+from termcolor import cprint
 
 from data.enum_game_list import GameList
 from games.base_game import GameBase
@@ -43,20 +44,25 @@ class GuessTheSongGame(GameBase):
                 cprint("🥺 WRONG!", color="light_red")
                 print(f"Your current score is: {self.game_score}\n")
 
-        cprint(f" 🎹 {song_choices[song_to_guess_index]['lyrics']} 🎸 ", color="white", on_color="on_blue")
+        cprint(f" 🎹 {song_choices[song_to_guess_index]['lyrics']} 🎸 ", color="white", on_color="on_light_blue")
 
         cprint("\nChoices:", color="cyan")
 
+        song_choices_display = []
+
         for song in song_choices:
-            print(f"[{str(song_choices.index(song) + 1)}] {song['title']}")
-        print("[5] EXIT GAME")
+            song_choices_display.append(song['title'])
+        song_choices_display.append("EXIT GAME")
 
-        input_answer = input(colored("\nYour answer: ", color="blue"))
+        input_answer = select(
+            options=song_choices_display,
+            return_index=True
+        )
 
-        if input_answer == "5":
+        if input_answer == 4:
             self.close_game()
 
-        if input_answer == str(song_to_guess_index + 1):
+        if input_answer == song_to_guess_index:
             self.game_score += 1
             self.is_answer_correct = True
             self.start_game(self)

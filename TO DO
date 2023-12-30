@@ -1,11 +1,4 @@
 
 >> To Dos
 
-= validation of game number input
-- create validator class
-- put to /utils
-
-= Beautify format
-- add rich text - decide
-
-= exit game
+= Use selectors instead of validations - decide
