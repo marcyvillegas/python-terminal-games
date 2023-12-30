@@ -3,6 +3,13 @@
 from data.enum_game_list import GameList
 from utils.clear_terminal import clear_terminal
 
+from termcolor import colored, cprint
+
+from utils.text_to_space import text_to_character
+
+
+# from utils.text_to_space import text_to_space
+
 
 class StartGame:
     """
@@ -23,14 +30,20 @@ class StartGame:
     @staticmethod
     def display_start_menu(self):
         clear_terminal()
-        print("== Choose what game to play ==")
 
+        welcome_message = "---- Welcome to python-terminal-games! ----"
+
+        cprint(text_to_character(text=welcome_message, character="-"), color="white", on_color="on_magenta")
+        cprint(welcome_message, color="white", on_color="on_magenta")
+        cprint(text_to_character(text=welcome_message, character="-", space_below=True), color="white", on_color="on_magenta")
+
+        cprint("Choose what game to play🕹️", color="red")
         game_number = 1
         for game_item in self.games:
             print(f"[{game_number}] {game_item.value}")
             game_number += 1
 
-        input_game_name = input("Enter the game number you want to play: ")
+        input_game_name = input(colored("\nEnter the game number you want to play: ", color="blue"))
 
         from data.game_list import game_list
         selected_game = self.games[int(input_game_name) - 1]

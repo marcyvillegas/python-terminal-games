@@ -1,3 +1,5 @@
+from termcolor import colored, cprint
+
 from data.enum_game_list import GameList
 from games.base_game import GameBase
 from games.guess_the_song.data.songs import songs
@@ -17,7 +19,6 @@ class GuessTheSongGame(GameBase):
         )
 
     def __call__(self):
-        super().__call__()
         self.start_game(self)
 
     # Logic of the game
@@ -31,27 +32,28 @@ class GuessTheSongGame(GameBase):
 
         clear_terminal()
 
+        super().display_welcome_message()
+
         if isinstance(self.is_answer_correct, bool):
             if self.is_answer_correct:
-                print("You are correct!")
-                print(f"Your current score is: {self.game_score}")
+                cprint("🥳 You are correct!", color="light_green")
+                print(f"Your current score is: {self.game_score}\n")
 
             if not self.is_answer_correct:
-                print("WRONG!")
-                print(f"Your current score is: {self.game_score}")
+                cprint("🥺 WRONG!", color="light_red")
+                print(f"Your current score is: {self.game_score}\n")
 
-        print("======================")
-        print("Guess this song:")
-        print(f"🎶 {song_choices[song_to_guess_index]['lyrics']} 🎶")
+        cprint(f" 🎹 {song_choices[song_to_guess_index]['lyrics']} 🎸 ", color="white", on_color="on_blue")
 
-        print("Choices:")
+        cprint("\nChoices:", color="cyan")
 
         for song in song_choices:
             print(f"[{str(song_choices.index(song) + 1)}] {song['title']}")
+        print("[5] EXIT GAME")
 
-        input_answer = input("Your answer: ")
+        input_answer = input(colored("\nYour answer: ", color="blue"))
 
-        if input_answer == "x":
+        if input_answer == "5":
             self.close_game()
 
         if input_answer == str(song_to_guess_index + 1):

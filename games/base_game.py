@@ -1,3 +1,5 @@
+from termcolor import cprint
+
 from utils.clear_terminal import clear_terminal
 
 
@@ -15,11 +17,11 @@ class GameBase:
         self.game_name = game_name
 
     # Displays welcome message of the specific game
-    def __call__(
+    def display_welcome_message(
             self
     ):
         clear_terminal()
-        print(f">> Welcome to {self.game_name} <<")
+        cprint(f">> Welcome to {self.game_name} <<\n", color="white", on_color="on_magenta")
 
     # Closes the current game and returns back to start menu
     def close_game(
