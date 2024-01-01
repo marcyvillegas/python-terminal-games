@@ -37,12 +37,15 @@ class GuessTheSongGame(GameBase):
 
         if isinstance(self.is_answer_correct, bool):
             if self.is_answer_correct:
-                cprint("🥳 You are correct!", color="light_green")
+                cprint("🥳 YOU ARE CORRECT!", color="light_green")
                 print(f"Your current score is: {self.game_score}\n")
 
             if not self.is_answer_correct:
                 cprint("🥺 WRONG!", color="light_red")
                 print(f"Your current score is: {self.game_score}\n")
+        else:
+            print("😄 Your score will display here")
+            print(f"Your current score is: {self.game_score}\n")
 
         cprint(f" 🎹 {song_choices[song_to_guess_index]['lyrics']} 🎸 ", color="white", on_color="on_light_blue")
 
@@ -52,7 +55,7 @@ class GuessTheSongGame(GameBase):
 
         for song in song_choices:
             song_choices_display.append(song['title'])
-        song_choices_display.append("EXIT GAME")
+        song_choices_display.append("❌  EXIT GAME")
 
         input_answer = select(
             options=song_choices_display,
@@ -60,9 +63,10 @@ class GuessTheSongGame(GameBase):
         )
 
         if input_answer == 4:
+            self.game_score = 0
+            self.is_answer_correct = None
             self.close_game()
-
-        if input_answer == song_to_guess_index:
+        elif input_answer == song_to_guess_index:
             self.game_score += 1
             self.is_answer_correct = True
             self.start_game(self)

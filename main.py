@@ -38,7 +38,7 @@ class StartGame:
         cprint(welcome_message, color="white", on_color="on_magenta")
         cprint(text_to_character(text=welcome_message, character="-", space_below=True), color="white", on_color="on_magenta")
 
-        cprint("Choose what game to play🕹️", color="red")
+        cprint("Choose what game to play🕹️", color="light_red")
 
         game_name_display = []
 
@@ -63,4 +63,5 @@ start_game = StartGame([
 ])
 
 # Runs the game program
-start_game()
+if __name__ == '__main__':
+    start_game()
