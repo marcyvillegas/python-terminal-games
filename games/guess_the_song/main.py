@@ -11,13 +11,11 @@ from utils.clear_terminal import clear_terminal
 
 class GuessTheSongGame(GameBase):
     """
-        Guess The Song is a game where you will guess a song through its lyrics.
+    Guess The Song is a game where you will guess a song through its lyrics.
     """
 
     def __init__(self):
-        super().__init__(
-            game_name=GameList.GUESS_THE_SONG.value
-        )
+        super().__init__(game_name=GameList.GUESS_THE_SONG.value)
 
     def __call__(self):
         self.start_game(self)
@@ -27,7 +25,6 @@ class GuessTheSongGame(GameBase):
 
     @staticmethod
     def start_game(self):
-
         song_choices = random.sample(songs, 4)
         song_to_guess_index = random.randrange(len(song_choices))
 
@@ -47,20 +44,21 @@ class GuessTheSongGame(GameBase):
             print("😄 Your score will display here")
             print(f"Your current score is: {self.game_score}\n")
 
-        cprint(f" 🎹 {song_choices[song_to_guess_index]['lyrics']} 🎸 ", color="white", on_color="on_light_blue")
+        cprint(
+            f" 🎹 {song_choices[song_to_guess_index]['lyrics']} 🎸 ",
+            color="white",
+            on_color="on_light_blue",
+        )
 
         cprint("\nChoices:", color="cyan")
 
         song_choices_display = []
 
         for song in song_choices:
-            song_choices_display.append(song['title'])
+            song_choices_display.append(song["title"])
         song_choices_display.append("❌  EXIT GAME")
 
-        input_answer = select(
-            options=song_choices_display,
-            return_index=True
-        )
+        input_answer = select(options=song_choices_display, return_index=True)
 
         if input_answer == 4:
             self.game_score = 0

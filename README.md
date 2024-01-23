@@ -2,11 +2,18 @@
 
 A collection of terminal games made in Python.
 
-*🚧 Still working on the project 🚧* 
+_🚧 Still working on the project 🚧_
 
 ## Motivation
+
 Goal of this project:
--  Help me and others to have a stronger grasp on the basics of Python, specifically on OOP concepts and classes.
+
+- Help me and others to have a stronger grasp on the basics of Python, specifically on OOP concepts and classes.
 
 ## Overview
-*Add list of classes here* 
+
+| Class              | Path                         | Functionality                            |
+| ------------------ | ---------------------------- | ---------------------------------------- |
+| StartGame()        | /main.py                     | Starts the game                          |
+| GameBase()         | /games/base_game.py          | Basis class for all created games        |
+| GuessTheSongGame() | /games/gues_the_song/main.py | Sample game that uses the GameBase class |
