@@ -2,8 +2,6 @@
 
 A collection of terminal games made in Python.
 
-_🚧 Still working on the project 🚧_
-
 ## Motivation
 
 Goal of this project:
