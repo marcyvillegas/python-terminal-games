@@ -17,3 +17,9 @@ Goal of this project:
 | StartGame()        | /main.py                     | Starts the game                          |
 | GameBase()         | /games/base_game.py          | Basis class for all created games        |
 | GuessTheSongGame() | /games/gues_the_song/main.py | Sample game that uses the GameBase class |
+
+## Games
+
+| Name                | Description                                                       |
+| ------------------- | ----------------------------------------------------------------- |
+| Guess The Song Game | Guess what is the title of the song based on the displayed lyrics |
